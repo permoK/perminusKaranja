@@ -156,7 +156,7 @@ export default function Navigation() {
       </motion.div>
 
       {/* Mobile Navigation Menu - Bottom Bar - Hidden in Hero Section */}
-      <motion.div
+      {/* <motion.div
         className={`fixed bottom-0 left-0 right-0 z-[9998] md:hidden py-3 xs:py-4 sm:py-6 transition-all duration-500 ${
           isHeroSection
             ? "opacity-0 pointer-events-none translate-y-full"
@@ -186,7 +186,7 @@ export default function Navigation() {
             ))}
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </>
   )
 }
