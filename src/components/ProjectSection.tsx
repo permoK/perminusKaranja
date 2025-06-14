@@ -167,11 +167,12 @@ function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[10000] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+        className="absolute inset-0 z-30 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
+        style={{ pointerEvents: 'auto' }}
       >
         <motion.div
           className="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
@@ -273,23 +274,23 @@ function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </div>
 
             {/* Links */}
-            <div className="flex space-x-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-base font-semibold shadow-md w-full sm:w-auto"
               >
-                <Github size={18} />
+                <Github size={20} />
                 <span>View Code</span>
               </a>
               <a
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-base font-semibold shadow-md w-full sm:w-auto"
               >
-                <Globe size={18} />
+                <Globe size={20} />
                 <span>Live Site</span>
               </a>
             </div>
@@ -313,7 +314,7 @@ export default function ProjectSection() {
   }, [])
 
   return (
-    <div className="relative w-full min-h-screen bg-black px-4 py-24 sm:py-28 md:py-32 lg:py-36">
+    <div className="relative w-full min-h-screen bg-black px-4 py-24 sm:py-28 md:py-32 lg:py-36 overflow-visible">
       <div className="w-full max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -506,7 +507,11 @@ export default function ProjectSection() {
       </div>
 
       {/* Project Modal */}
-      <ProjectModal project={selectedProject!} isOpen={!!selectedProject} onClose={closeModal} />
+      <ProjectModal
+        project={selectedProject as (typeof projects)[0]}
+        isOpen={!!selectedProject}
+        onClose={closeModal}
+      />
     </div>
   )
 }
