@@ -139,8 +139,8 @@ const projects = [
     technologies: ["Next.js", "Framer Motion", "TailwindCSS", "TypeScript", "Vercel"],
     features: ["Smooth Animations", "Responsive Design", "SEO Optimized", "Fast Loading", "Interactive Elements"],
     links: {
-      github: "https://github.com/permoK/portfolio",
-      live: "https://permok.dev",
+      github: "https://github.com/permoK/perminusKaranja",
+      live: "https://perminusk-karanja.vercel.app/",
     },
   },
 ]
