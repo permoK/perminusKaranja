@@ -140,7 +140,7 @@ const projects = [
     features: ["Smooth Animations", "Responsive Design", "SEO Optimized", "Fast Loading", "Interactive Elements"],
     links: {
       github: "https://github.com/permoK/perminusKaranja",
-      live: "https://perminusk-karanja.vercel.app/",
+      live: "https://perminus-karanja.vercel.app/",
     },
   },
 ]
