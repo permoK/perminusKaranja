@@ -1,0 +1,443 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 14px; /* Base font size for mobile */
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Responsive font scaling */
+@media (min-width: 375px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  font-weight: 300; /* Lighter default font weight */
+  letter-spacing: 0.025em; /* Slight letter spacing */
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+
+  /* Add padding to account for fixed navigation - only when not loading */
+  padding-top: 80px; /* Desktop navigation height */
+
+  /* Performance optimizations */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+
+  /* Enable smooth scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove padding when loading screen is active */
+body.loading {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden;
+}
+
+/* Mobile padding adjustment - No bottom padding for hero section */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px; /* Mobile navigation height */
+    padding-bottom: 0; /* Remove bottom padding */
+  }
+
+  body.loading {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Add bottom padding only to sections after hero */
+  section:not(#home) {
+    padding-bottom: 80px; /* Mobile bottom navigation height */
+  }
+}
+
+/* Root element should take full height */
+#__next,
+main {
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Hero section specific styles */
+#home {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Hide scrollbars on webkit browsers for cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Performance optimizations for animations */
+.slide-container {
+  will-change: transform, opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Smooth scrolling optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Hardware acceleration for better performance */
+.animated-element {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Enhanced text contrast and readability */
+.text-enhanced {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improved contrast for low opacity text */
+.text-white\/40 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.text-white\/60 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.text-gray-300 {
+  color: rgb(209, 213, 219) !important;
+}
+
+.text-gray-400 {
+  color: rgb(156, 163, 175) !important;
+}
+
+/* Better focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* Typography improvements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Button and interactive element styles */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom focus styles */
+button:focus,
+a:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* Disable text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Improved mobile touch targets */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Safe area handling for mobile devices */
+@supports (padding: max(0px)) {
+  body:not(.loading) {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-top: max(80px, calc(80px + env(safe-area-inset-top))); /* Account for navigation + safe area */
+  }
+
+  @media (min-width: 768px) {
+    body:not(.loading) {
+      padding-top: max(80px, calc(80px + env(safe-area-inset-top)));
+      padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+  }
+
+  @media (max-width: 768px) {
+    body:not(.loading) {
+      padding-bottom: 0; /* No bottom padding for hero */
+    }
+
+    section:not(#home) {
+      padding-bottom: max(80px, calc(80px + env(safe-area-inset-bottom)));
+    }
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Prevent zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* Optimize touch scrolling */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Better text rendering on mobile */
+  body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Fix mobile scroll issues */
+  html,
+  body {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Ensure sections don't cause horizontal overflow */
+  section,
+  div {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Smooth section transitions with proper offset for fixed nav */
+section {
+  scroll-margin-top: 100px;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  max-width: 100vw;
+}
+
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* Text truncation utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  max-width: 100%;
+  height: auto;
+}
+
+img[src*="placeholder"] {
+  background: linear-gradient(45deg, #374151, #4b5563);
+  background-size: 20px 20px;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
+}
+
+/* Enhanced hover effects */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover\:-translate-y-1 {
+  transform: translateY(-0.25rem);
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-xl {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .backdrop-blur-sm {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Fix for mobile touch scrolling */
+@media (max-width: 768px) {
+  body {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Ensure all containers allow vertical scrolling */
+  .container,
+  main,
+  section {
+    touch-action: pan-y;
+  }
+
+  /* Fix for potential scroll blocking elements */
+  * {
+    touch-action: manipulation;
+  }
+
+  /* Allow vertical scrolling specifically */
+  html {
+    touch-action: pan-y;
+  }
+}
+
+/* Prevent horizontal overflow on all elements */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Container queries for better responsive design */
+@container (max-width: 768px) {
+  .responsive-container {
+    padding: 1rem;
+  }
+}
+
+/* Mobile viewport fixes */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+}
