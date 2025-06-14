@@ -167,7 +167,7 @@ function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className="absolute inset-0 z-30 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+        className="absolute inset-0 z-30 bg-black/90 backdrop-blur-sm flex items-center justify-center p-0 sm:p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -175,21 +175,21 @@ function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
         style={{ pointerEvents: 'auto' }}
       >
         <motion.div
-          className="bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          className="bg-gray-900 rounded-none w-full h-auto max-h-[90vh] overflow-y-auto sm:rounded-2xl sm:max-w-4xl sm:h-auto sm:max-h-[90vh] sm:p-6 p-4"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-700">
+          <div className="flex items-center justify-between p-2 sm:p-6 border-b border-gray-700">
             <div>
               <h3 className="text-2xl font-bold text-white">{project.title}</h3>
               <p className="text-gray-300">{project.subtitle}</p>
             </div>
             <button
               onClick={onClose}
-              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors"
+              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors absolute top-2 right-2 sm:static"
             >
               <X size={20} />
             </button>
