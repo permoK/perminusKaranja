@@ -19,6 +19,19 @@ export const metadata: Metadata = {
     "Portfolio of Karanja Perminus, a creative developer and digital artist crafting innovative web experiences with cutting-edge technologies and artistic vision.",
   keywords: ["portfolio", "creative developer", "digital artist", "React", "Three.js", "WebGL", "Next.js"],
   authors: [{ name: "Karanja Perminus" }],
+  icons: {
+    icon: "/favicon.png",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/images/profile-photo.png",
+        width: 1200,
+        height: 630,
+        alt: "Profile Photo",
+      },
+    ],
+  },
 }
 
 export const viewport = {
